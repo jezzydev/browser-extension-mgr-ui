@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light dark;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 1em;
+
+  /* colors */
+  /* neutral */
+  --color-neutral-900: hsl(227, 75%, 14%);
+  --color-neutral-800: hsl(226, 25%, 17%);
+  --color-neutral-700: hsl(225, 23%, 24%);
+  --color-neutral-600: hsl(226, 11%, 37%);
+  --color-neutral-300: hsl(0, 0%, 78%);
+  --color-neutral-200: hsl(217, 61%, 90%);
+  --color-neutral-100: hsl(0, 0%, 93%);
+  --color-neutral-0: hsl(200, 60%, 99%);
+
+  /* red */
+  --color-red-400: hsl(3, 86%, 64%);
+  --color-red-500: hsl(3, 71%, 56%);
+  --color-red-700: hsl(3, 77%, 44%);
+
+  /* gradient */
+  --gradient-light: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+  --gradient-dark: linear-gradient(180deg, #040918 0%, #091540 100%);
+
+  /* blue */
+  --color-blue: hsl(228, 45%, 44%);
+
+  --theme-icon-moon: url(../assets/images/icon-moon.svg);
+  --theme-icon-sun: url(../assets/images/icon-sun.svg);
+  --theme-icon: var(--theme-icon-moon);
+}
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+  margin: 0;
+  background-color: light-dark(var(--gradient-light), var(--gradient-dark));
+  padding: 20px 16px 64px;
+}
+
+.light {
+  color-scheme: light;
+  --theme-icon: var(--theme-icon-moon);
+}
+
+.dark {
+  color-scheme: dark;
+  --theme-icon: var(--theme-icon-sun);
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+main {
+  display: block;
+}
+
+.text-preset-1 {
+  font-size: 2.125rem; /* 34px */
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -1px;
+}
+
+.text-preset-2 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: -0.2px;
+}
+
+.text-preset-3 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.3px;
+}
+
+.text-preset-4 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.3px;
+}
+
+.text-preset-5 {
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.5px;
+}
+
+.text-preset-6 {
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.5px;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--color-blue);
+}
