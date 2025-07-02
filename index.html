@@ -18,15 +18,16 @@
     />
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/extensions.css" />
     <title>Frontend Mentor | Browser extensions manager UI</title>
   </head>
   <body>
     <header class="header-container">
       <span class="logo-container">
         <img
-          src="./assets/images/logo.svg"
-          alt="Browser extensions manager logo"
           class="logo"
+          src="./assets/images/logo.svg"
+          alt="Browser extension manager logo"
         />
       </span>
       <button class="theme-setting-btn" type="button">
@@ -36,15 +37,34 @@
     <main>
       <div class="extensions-filters">
         <h1 class="text-preset-1">Extensions List</h1>
-        <button type="button">All</button>
-        <button type="button">Active</button>
-        <button type="button">Inactive</button>
+        <div class="filters-container">
+          <button type="button" class="filter-btn">All</button>
+          <button type="button" class="filter-btn selected-filter-btn">
+            Active
+          </button>
+          <button type="button" class="filter-btn">Inactive</button>
+        </div>
       </div>
       <ul class="extensions-list">
-        <li>
-          <h3>DevLens</h3>
-          <p>Quickly inspect page layouts and visualize element boundaries.</p>
-          <button>Remove</button>
+        <li class="extension-item">
+          <div class="extension-info">
+            <img
+              class="extension-icon"
+              alt="Extension item icon"
+              src="./assets/images/logo-devlens.svg"
+            />
+            <h3 class="extension-name">DevLens</h3>
+            <p class="extension-desc">
+              Quickly inspect page layouts and visualize element boundaries.
+            </p>
+          </div>
+          <div class="extension-actions">
+            <button type="button" class="remove-btn">Remove</button>
+            <label class="switch">
+              <input id="1" type="checkbox" />
+              <span class="slider"></span>
+            </label>
+          </div>
         </li>
       </ul>
       <!-- 
@@ -97,7 +117,7 @@
       <div class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
+        >. Coded by <a href="https://github.com/jezzydev">jezzydev</a>.
       </div>
     </footer>
   </body>

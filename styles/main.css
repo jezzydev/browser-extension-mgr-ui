@@ -11,7 +11,7 @@
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 1em;
-
+  height: 100%;
   /* colors */
   /* neutral */
   --color-neutral-900: hsl(227, 75%, 14%);
@@ -38,6 +38,7 @@
   --theme-icon-moon: url(../assets/images/icon-moon.svg);
   --theme-icon-sun: url(../assets/images/icon-sun.svg);
   --theme-icon: var(--theme-icon-moon);
+  --logo: url(../assets/images/logo.svg);
 }
 
 /**
@@ -46,17 +47,19 @@
 
 body {
   margin: 0;
-  background-color: light-dark(var(--gradient-light), var(--gradient-dark));
   padding: 20px 16px 64px;
+  color: light-dark(var(--color-neutral-900), var(--color-neutral-0));
 }
 
 .light {
   color-scheme: light;
+  background: var(--gradient-light);
   --theme-icon: var(--theme-icon-moon);
 }
 
 .dark {
   color-scheme: dark;
+  background: var(--gradient-dark);
   --theme-icon: var(--theme-icon-sun);
 }
 
@@ -66,6 +69,18 @@ body {
 
 main {
   display: block;
+  margin-block-start: 40px;
+  margin-block-end: 40px;
+}
+
+button {
+  font-family: inherit;
+  outline: none;
+}
+
+ul,
+li {
+  list-style: none;
 }
 
 .text-preset-1 {
