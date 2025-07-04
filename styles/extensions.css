@@ -34,7 +34,6 @@
 }
 
 .selected-filter-btn {
-  width: calc-size(auto, size + 2px);
   border: none;
   background-color: light-dark(var(--color-red-700), var(--color-red-400));
   color: light-dark(var(--color-neutral-0), var(--color-neutral-900));
@@ -71,28 +70,39 @@
   box-shadow: 0 0 0 2px var(--color-neutral-0), 0 0 0 4px var(--color-red-400);
 }
 
-/* extensions list */
 .extensions-list {
+  margin: 0 auto;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  align-items: center;
 }
 
 .extension-item {
+  width: 343px;
+  height: 200px;
   padding: 20px;
-  border-radius: 12px;
-  border: 1px solid var(--color-neutral-200);
-  background-color: var(--color-neutral-0);
-  box-shadow: 0px 2px 2px 0px hsla(217, 34%, 82%, 22%),
-    0px 1px 5px 1px hsla(217, 34%, 82%, 22%);
-  display: grid;
-  gap: 24px;
+  border-radius: 20px;
+  border: 1px solid
+    light-dark(var(--color-neutral-200), var(--color-neutral-600));
+  background-color: light-dark(
+    var(--color-neutral-0),
+    var(--color-neutral-800)
+  );
+  box-shadow: 0px 2px 2px 0px light-dark(hsla(217, 34%, 82%, 22%), transparent),
+    0px 1px 5px 1px light-dark(hsla(217, 34%, 82%, 22%), transpraent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .extension-info {
   display: grid;
   row-gap: 8px;
   column-gap: 16px;
+  text-align: left;
+  grid-template-columns: 60px 1fr;
   grid-template-areas:
     "icon name"
     "icon desc";
@@ -119,6 +129,37 @@
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -0.5px;
+  color: light-dark(var(--color-neutral-600), var(--color-neutral-300));
+}
+
+@media screen and (min-width: 768px) {
+  .extensions-filters {
+    flex-direction: row;
+    gap: 48px;
+    justify-content: space-between;
+    margin-block-end: 32px;
+  }
+
+  .extensions-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    max-width: 704px;
+  }
+
+  .extension-item {
+    width: 346px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .extensions-list {
+    max-width: 1170px;
+  }
+
+  .extension-item {
+    width: 382px;
+  }
 }
 
 /* extension actions */
@@ -131,26 +172,32 @@
 
 .remove-btn {
   border-radius: 999px;
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid
+    light-dark(var(--color-neutral-300), var(--color-neutral-600));
   padding: 8px 16px;
-  color: var(--color-neutral-900);
+  color: light-dark(var(--color-neutral-900), var(--color-neutral-0));
   font-size: 1rem; /* 16px */
   font-weight: 500;
   line-height: 140%;
   letter-spacing: -0.5px;
-  background-color: var(--color-neutral-0);
+  background-color: transparent;
+  /* background-color: var(--color-neutral-0); */
 }
 
 .remove-btn:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-red-700);
-  background-color: var(--color-neutral-100);
-  border-color: var(--color-neutral-0);
+  box-shadow: 0 0 0 2px light-dark(white, var(--color-neutral-900)),
+    0 0 0 4px light-dark(var(--color-red-700), var(--color-red-400));
+  background-color: light-dark(
+    var(--color-neutral-100),
+    var(--color-neutral-600)
+  );
+  border-color: light-dark(var(--color-neutral-0), transparent);
 }
 
 .remove-btn:hover {
   cursor: pointer;
-  background-color: var(--color-red-700);
-  color: var(--color-neutral-0);
+  background-color: light-dark(var(--color-red-700), var(--color-red-400));
+  color: light-dark(var(--color-neutral-0), var(--color-neutral-900));
   border-color: transparent;
 }
 
@@ -176,12 +223,17 @@
   right: 0;
   border-radius: 999px;
   padding: 2px;
-  background-color: var(--color-neutral-300);
+  background-color: light-dark(
+    var(--color-neutral-300),
+    var(--color-neutral-600)
+  );
   transition: background-color 0.4s;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 0 2px var(--color-neutral-0), 0 0 0 4px var(--color-red-400);
+  box-shadow: 0 0 0 2px
+      light-dark(var(--color-neutral-0), var(--color-neutral-800)),
+    0 0 0 4px var(--color-red-400);
 }
 
 .slider::before {
@@ -193,11 +245,14 @@ input:focus + .slider {
   width: 16px;
   height: 16px;
   background-color: var(--color-neutral-0);
+  box-shadow: 0 1px 3px 0
+      light-dark(hsl(220, 29%, 5%, 30%), hsl(220, 29%, 5%, 10%)),
+    0 1px 2px -1px light-dark(hsl(220, 29%, 5%, 30%), hsl(227, 75%, 14%, 60%));
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: var(--color-red-700);
+  background-color: light-dark(var(--color-red-700), var(--color-red-400));
 }
 
 input:checked + .slider::before {

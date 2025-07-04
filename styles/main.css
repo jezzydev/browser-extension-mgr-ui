@@ -11,7 +11,7 @@
   font-style: normal;
   font-variation-settings: "wdth" 100;
   font-size: 1em;
-  height: 100%;
+
   /* colors */
   /* neutral */
   --color-neutral-900: hsl(227, 75%, 14%);
@@ -63,12 +63,17 @@ body {
   --theme-icon: var(--theme-icon-sun);
 }
 
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1170px;
+}
+
 /**
  * Render the `main` element consistently in IE.
  */
 
 main {
-  display: block;
   margin-block-start: 40px;
   margin-block-end: 40px;
 }
@@ -132,4 +137,20 @@ li {
 
 .attribution a {
   color: var(--color-blue);
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 24px 32px 64px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    padding: 40px 135px 64px;
+  }
+
+  main {
+    margin-block-start: 64px;
+  }
 }
