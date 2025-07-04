@@ -1,4 +1,3 @@
-
 const themeSettingBtn = document.querySelector('.theme-setting-btn');
 themeSettingBtn.addEventListener("click", toggleTheme);
 
@@ -19,12 +18,18 @@ function toggleTheme() {
     }
 }
 
+
+const allBtn = document.getElementById('all-btn');
+const activeBtn = document.getElementById('active-btn');
+const inactiveBtn = document.getElementById('inactive-btn');
+const selectedFilterClassName = 'selected-filter-btn';
+
 /* load data */
 fetch('../data.json')
     .then(response => {
         if (!response.ok) {
             alert('Error loading extensions list.');
-            throw new Error(`Error loading extensions list.${response.status}`);
+            throw new Error(`Error loading extensions list. Status: ${response.status}`);
         }
         return response.json();
     })
@@ -74,30 +79,33 @@ fetch('../data.json')
             actions.append(label);
 
             const input = document.createElement('input');
-            input.id = "chk" + i;
-            input.type = "checkbox";
+            input.id = 'chk' + i;
+            input.type = 'checkbox';
             input.checked = data.isActive;
+            input.addEventListener('change', function () {
+                const selectedBtn = document.querySelector(`.${selectedFilterClassName}`);
+
+                if (selectedBtn != allBtn) {
+                    this.closest('.extension-item').style.display = 'none';
+                }
+            });
             label.append(input);
 
             const slider = document.createElement('span');
-            slider.className = "slider";
+            slider.className = 'slider';
             label.append(slider);
 
             const item = document.createElement('li');
-            item.className = "extension-item";
+            item.className = 'extension-item';
             item.append(info);
             item.append(actions);
             extList.append(item);
         }
     })
     .catch(error => {
-        alert('Error loading data into the page.');
+        alert(`Failed loading data into the page. Error: ${error}`);
     });
 
-
-const allBtn = document.getElementById('all-btn');
-const activeBtn = document.getElementById('active-btn');
-const inactiveBtn = document.getElementById('inactive-btn');
 
 function getChecked() {
     return document.querySelectorAll('.extension-item:has(input[type=checkbox]:checked)');
@@ -109,23 +117,22 @@ function getUnchecked() {
 
 function showItems(items) {
     items.forEach((elem, key, parent) => {
-        elem.style.display = "grid";
+        elem.style.display = 'grid';
     })
 }
 
 function hideItems(items) {
     items.forEach((elem, key, parent) => {
-        elem.style.display = "none";
+        elem.style.display = 'none';
     })
 }
 
 function updateSelectedBtn(newSelectedBtn) {
-    let className = 'selected-filter-btn';
-    let selectedBtn = document.querySelector(`.${className}`);
+    const selectedBtn = document.querySelector(`.${selectedFilterClassName}`);
 
     if (selectedBtn != newSelectedBtn) {
-        selectedBtn.classList.remove(className);
-        newSelectedBtn.classList.add(className);
+        selectedBtn.classList.remove(selectedFilterClassName);
+        newSelectedBtn.classList.add(selectedFilterClassName);
     }
 }
 

@@ -41,10 +41,14 @@
   --logo: url(../assets/images/logo.svg);
 }
 
+body,
+html {
+  min-height: 100vh;
+}
+
 /**
  * Remove the margin in all browsers.
  */
-
 body {
   margin: 0;
   padding: 20px 16px 64px;
