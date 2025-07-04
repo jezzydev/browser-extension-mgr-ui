@@ -25,7 +25,7 @@ const inactiveBtn = document.getElementById('inactive-btn');
 const selectedFilterClassName = 'selected-filter-btn';
 
 /* load data */
-fetch('../data.json')
+fetch('data.json')
     .then(response => {
         if (!response.ok) {
             alert('Error loading extensions list.');

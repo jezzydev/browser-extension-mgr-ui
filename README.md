@@ -146,10 +146,10 @@ Users should be able to:
 }
 ```
 
-- One way to load data from a json file is to use fetch().
+- One way to load data from a json file is to use fetch(). The URL used in fetch is always relative to the HTML page's URL, not the script's location.
 
 ```js
-fetch("../data.json")
+fetch("data.json")
   .then((response) => {
     if (!response.ok) {
       alert("Error loading extensions list.");
