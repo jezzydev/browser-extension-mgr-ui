@@ -1,5 +1,6 @@
+/* theme */
 const themeSettingBtn = document.querySelector('.theme-setting-btn');
-themeSettingBtn.addEventListener("click", toggleTheme);
+themeSettingBtn.addEventListener('click', toggleTheme);
 
 function toggleTheme() {
     const html = document.querySelector(':root')
@@ -31,43 +32,45 @@ fetch('data.json')
             alert('Error loading extensions list.');
             throw new Error(`Error loading extensions list. Status: ${response.status}`);
         }
+
         return response.json();
     })
     .then(jsonData => {
         //load the extensions into the DOM
         const extList = document.querySelector('.extensions-list');
 
+        //create each extension item and add to the DOM
         for (let i = 0; i < jsonData.length; i++) {
             const data = jsonData[i];
 
             //extension info
             const info = document.createElement('div');
-            info.className = "extension-info";
+            info.className = 'extension-info';
 
             const img = document.createElement('img');
-            img.className = "extension-icon";
-            img.alt = "Extension item icon";
+            img.className = 'extension-icon';
+            img.alt = 'Extension item icon';
             img.src = data.logo;
             info.append(img);
 
             const name = document.createElement('h3');
             name.innerHTML = data.name;
-            name.className = "extension-name";
+            name.className = 'extension-name';
             info.append(name);
 
             const desc = document.createElement('p');
             desc.innerHTML = data.description;
-            desc.className = "extension-desc";
+            desc.className = 'extension-desc';
             info.append(desc);
 
             // extension actions
             const actions = document.createElement('div');
-            actions.className = "extension-actions";
+            actions.className = 'extension-actions';
 
             const removeBtn = document.createElement('button');
-            removeBtn.type = "button";
-            removeBtn.className = "remove-btn";
-            removeBtn.innerHTML = "Remove";
+            removeBtn.type = 'button';
+            removeBtn.className = 'remove-btn';
+            removeBtn.innerHTML = 'Remove';
             removeBtn.addEventListener('click', (event) => {
                 const parent = event.target.closest('li.extension-item');
                 parent.remove();
@@ -75,7 +78,7 @@ fetch('data.json')
             actions.append(removeBtn);
 
             const label = document.createElement('label');
-            label.className = "switch";
+            label.className = 'switch';
             actions.append(label);
 
             const input = document.createElement('input');
@@ -103,7 +106,7 @@ fetch('data.json')
         }
     })
     .catch(error => {
-        alert(`Failed loading data into the page. Error: ${error}`);
+        alert(`Failed loading data into the page. ${error}`);
     });
 
 
